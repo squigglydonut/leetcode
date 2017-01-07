@@ -1,3 +1,4 @@
+require 'benchmark'
 def reverse_vowel(string)
   vowels = %w(a e i o u)
   # consonants = %w(b c d f g h j k l m n p q r s t v w x y z)
@@ -21,4 +22,8 @@ def reverse_vowel(string)
     string
 end
 
-p reverse_vowel("leetcode")
+print "The result is: #{reverse_vowel("leetcode")}\n"
+
+Benchmark.bm(10) do |x|
+  x.report('leetcode:') {reverse_vowel("leetcode")}
+end
